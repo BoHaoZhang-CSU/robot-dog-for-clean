@@ -477,7 +477,17 @@ def mainloop():
     servo_output(ma_case,init_case,A_[0],A_[1],A_[2],A_[3],A_[4],A_[5],A_[6],A_[7])
     IK_ERROR=0
   except:
-    IK_ERROR=1
+    IK_ERROR=1 
+
+def rise():
+  pin2 = Pin(2, Pin.OUT)
+  pin2.value(1)
+  pin0 = Pin(0, Pin.OUT)
+  pin0.value(0)
+  pin4 = Pin(4)
+  pwm = PWM(pin4, freq=1000, duty=800) 
+  time.sleep(2)  # 短暂延时# duty 范围 0-1023，512 表示 50% 占空比
+  pin2.value(1)
 print("Py-apple V7.2 通用控制器 by 灯哥 20210723 ESP32)")
 print("开源协议:Apache License 2.0")
 print("作者邮件:ream_d@yeah.net")
