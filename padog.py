@@ -392,7 +392,12 @@ def rise():
   pin0.value(0)
   pin4.value(1)
   soft_timer_flag=1 
-  
+def down():
+  global soft_timer_flag
+  pin2.value(0)
+  pin0.value(1)
+  pin4.value(1)
+  soft_timer_flag=1   
 def soft_timer_func():
   global soft_timer,soft_timer_flag
   if soft_timer_flag==1:
