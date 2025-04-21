@@ -382,21 +382,22 @@ def alarm_and_servo_control():
 '''-----------------------------User Application----------------------------------------------------'''
 soft_timer=0
 soft_timer_flag=0
+pin2 = Pin(2, Pin.OUT)
+pin0 = Pin(0, Pin.OUT)
+pin4 = Pin(4)
+pwm = PWM(pin4, freq=1000, duty=800)
 def rise():
-  pin2 = Pin(2, Pin.OUT)
+  global soft_timer,soft_timer_flag
   pin2.value(1)
-  pin0 = Pin(0, Pin.OUT)
   pin0.value(0)
-  pin4 = Pin(4)
-  pwm = PWM(pin4, freq=1000, duty=800)
+  
   soft_timer_flag=1 
   
 def soft_timer_func():
   if soft_timer_flag==1:
-    global soft_timer
+    global soft_timer,soft_timer_flag
     soft_timer+=1
     if soft_timer>400:
-      pin2 = Pin(2, Pin.OUT)
       pin2.value(0)
       soft_timer=0
       soft_timer_flag = 0
