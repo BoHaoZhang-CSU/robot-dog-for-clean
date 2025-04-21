@@ -30,7 +30,7 @@ def UART_Run():
         read = uart6.read(1).decode('gbk')
       if(command != "1/" ) and command!="":
         try:
-          print("exec:",command)
+          # print("exec:",command)
           exec(command)
           #print("exec:",command)
         except:
@@ -402,7 +402,7 @@ def soft_timer_func():
   global soft_timer,soft_timer_flag
   if soft_timer_flag==1:
     soft_timer+=1
-    if soft_timer>400:
+    if soft_timer>40:
       pin2.value(0)
       pin4.value(0)
       soft_timer=0

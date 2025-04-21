@@ -29,7 +29,7 @@ def loop(t):
       if padog.loop_speed_mode==0:
         print("Loop mode 1")
         t.deinit()
-        t.init(period=5,mode=Timer.PERIODIC,callback=loop)
+        t.init(period=30,mode=Timer.PERIODIC,callback=loop)
         padog.loop_speed_mode_sc=0
       elif padog.loop_speed_mode==1:
         print("Loop mode 2")
@@ -45,13 +45,8 @@ def loop(t):
 def app_1():
   exec(open('web_c.py').read())
 
-t.init(period=50,mode=Timer.PERIODIC,callback=loop)
+t.init(period=30,mode=Timer.PERIODIC,callback=loop)
 padog.loop_speed_mode_sc=0
 
 padog.start_ring()
-#WIFI热点模式
-padog.do_connect_AP()    
-_thread.stack_size(1024*10)
-_thread.start_new_thread(app_1, ())
-
 
