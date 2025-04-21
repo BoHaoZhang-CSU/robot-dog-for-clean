@@ -23,7 +23,7 @@ def UART_Run():
   if uart_per_add>=50:
     uart_per_add=0
     command=""
-    if uart6.any():
+    if uart6.any() > 0:
       read = uart6.read(1).decode('gbk')
       while read != '/':
         command = command + read
@@ -384,22 +384,22 @@ soft_timer=0
 soft_timer_flag=0
 pin2 = Pin(2, Pin.OUT)
 pin0 = Pin(0, Pin.OUT)
-pin4 = Pin(4)
-pwm = PWM(pin4, freq=1000, duty=800)
+pin4 = Pin(4, Pin.OUT)
+
 def rise():
   global soft_timer_flag
   pin2.value(1)
   pin0.value(0)
-  
+  pin4.value(1)
   soft_timer_flag=1 
   
 def soft_timer_func():
   global soft_timer,soft_timer_flag
   if soft_timer_flag==1:
-    
     soft_timer+=1
     if soft_timer>400:
       pin2.value(0)
+      pin4.value(0)
       soft_timer=0
       soft_timer_flag = 0
 '''---------------------------------------------------------------------------------'''          

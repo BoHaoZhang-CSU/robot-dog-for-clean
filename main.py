@@ -36,14 +36,16 @@ def loop(t):
         t.deinit()
         t.init(period=100,mode=Timer.PERIODIC,callback=loop)
         padog.loop_speed_mode_sc=0
-  except:
+  except Exception as e:
     t.deinit()
+    import sys
+    sys.print_exception(e)  # 打印完整错误堆栈
     print("致命错误，重新烧录程序")
 
 def app_1():
   exec(open('web_c.py').read())
 
-t.init(period=5,mode=Timer.PERIODIC,callback=loop)
+t.init(period=20,mode=Timer.PERIODIC,callback=loop)
 padog.loop_speed_mode_sc=0
 
 padog.start_ring()
