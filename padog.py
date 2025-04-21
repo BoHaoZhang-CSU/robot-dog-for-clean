@@ -387,15 +387,16 @@ pin0 = Pin(0, Pin.OUT)
 pin4 = Pin(4)
 pwm = PWM(pin4, freq=1000, duty=800)
 def rise():
-  global soft_timer,soft_timer_flag
+  global soft_timer_flag
   pin2.value(1)
   pin0.value(0)
   
   soft_timer_flag=1 
   
 def soft_timer_func():
+  global soft_timer,soft_timer_flag
   if soft_timer_flag==1:
-    global soft_timer,soft_timer_flag
+    
     soft_timer+=1
     if soft_timer>400:
       pin2.value(0)
