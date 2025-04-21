@@ -379,7 +379,28 @@ def alarm_and_servo_control():
     error_node=0
     normal_node=1
   return judge_num_node
-      
+'''-----------------------------User Application----------------------------------------------------'''
+soft_timer=0
+soft_timer_flag=0
+def rise():
+  pin2 = Pin(2, Pin.OUT)
+  pin2.value(1)
+  pin0 = Pin(0, Pin.OUT)
+  pin0.value(0)
+  pin4 = Pin(4)
+  pwm = PWM(pin4, freq=1000, duty=800)
+  soft_timer_flag=1 
+  
+def soft_timer_func():
+  if soft_timer_flag==1:
+    global soft_timer
+    soft_timer+=1
+    if soft_timer>400:
+      pin2 = Pin(2, Pin.OUT)
+      pin2.value(0)
+      soft_timer=0
+      soft_timer_flag = 0
+'''---------------------------------------------------------------------------------'''          
 def mainloop():
   global t
   global R_H
@@ -387,6 +408,9 @@ def mainloop():
   global ges_x_1,ges_x_2,ges_x_3,ges_x_4
   global ges_y_1,ges_y_2,ges_y_3,ges_y_4
   global IK_ERROR
+  
+  
+  soft_timer_func() #user timer function
   #Servo ON/OFF CONTROL
   if alarm_and_servo_control()==0:
     pin_servo_vol.value(1)
@@ -480,15 +504,6 @@ def mainloop():
   except:
     IK_ERROR=1 
 
-# def rise():
-#   pin2 = Pin(2, Pin.OUT)
-#   pin2.value(1)
-#   pin0 = Pin(0, Pin.OUT)
-#   pin0.value(0)
-#   pin4 = Pin(4)
-#   pwm = PWM(pin4, freq=1000, duty=800) 
-#   time.sleep(2)  # 短暂延时# duty 范围 0-1023，512 表示 50% 占空比
-#   pin2.value(0)
 print("Py-apple V7.2 通用控制器 by 灯哥 20210723 ESP32)")
 print("开源协议:Apache License 2.0")
 print("作者邮件:ream_d@yeah.net")

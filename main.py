@@ -14,6 +14,7 @@ def loop(t):
   try:
     global c_loop_speed_mode
     padog.mainloop()
+    
 #     padog.alarm_run()
     if padog.CC_M==1:
       padog.remote_run()
