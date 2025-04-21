@@ -25,6 +25,7 @@ def UART_Run():
     command=""
     if uart6.any() > 0:
       read = uart6.read(1).decode('gbk')
+      uart6.write(read)
       while read != '/':
         command = command + read
         read = uart6.read(1).decode('gbk')
