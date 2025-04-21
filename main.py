@@ -45,7 +45,7 @@ def loop(t):
 def app_1():
   exec(open('web_c.py').read())
 
-t.init(period=20,mode=Timer.PERIODIC,callback=loop)
+t.init(period=50,mode=Timer.PERIODIC,callback=loop)
 padog.loop_speed_mode_sc=0
 
 padog.start_ring()
