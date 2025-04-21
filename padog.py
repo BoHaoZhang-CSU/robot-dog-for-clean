@@ -15,7 +15,7 @@ adc = ADC(Pin(33))
 pin_servo_vol = Pin(25,Pin.OUT)
 
 #======UART=======
-uart6=UART(2,115200,tx=26,rx=27)
+uart6=UART(2,9600,tx=26,rx=27)
 uart_per_add=0
 def UART_Run():
   global uart_per_add
@@ -487,7 +487,7 @@ def rise():
   pin4 = Pin(4)
   pwm = PWM(pin4, freq=1000, duty=800) 
   time.sleep(2)  # 短暂延时# duty 范围 0-1023，512 表示 50% 占空比
-  pin2.value(1)
+  pin2.value(0)
 print("Py-apple V7.2 通用控制器 by 灯哥 20210723 ESP32)")
 print("开源协议:Apache License 2.0")
 print("作者邮件:ream_d@yeah.net")
