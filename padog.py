@@ -30,6 +30,7 @@ def UART_Run():
         read = uart6.read(1).decode('gbk')
       if(command != "1/" ) and command!="":
         try:
+          print("exec:",command)
           exec(command)
           #print("exec:",command)
         except:
@@ -479,15 +480,15 @@ def mainloop():
   except:
     IK_ERROR=1 
 
-def rise():
-  pin2 = Pin(2, Pin.OUT)
-  pin2.value(1)
-  pin0 = Pin(0, Pin.OUT)
-  pin0.value(0)
-  pin4 = Pin(4)
-  pwm = PWM(pin4, freq=1000, duty=800) 
-  time.sleep(2)  # 短暂延时# duty 范围 0-1023，512 表示 50% 占空比
-  pin2.value(0)
+# def rise():
+#   pin2 = Pin(2, Pin.OUT)
+#   pin2.value(1)
+#   pin0 = Pin(0, Pin.OUT)
+#   pin0.value(0)
+#   pin4 = Pin(4)
+#   pwm = PWM(pin4, freq=1000, duty=800) 
+#   time.sleep(2)  # 短暂延时# duty 范围 0-1023，512 表示 50% 占空比
+#   pin2.value(0)
 print("Py-apple V7.2 通用控制器 by 灯哥 20210723 ESP32)")
 print("开源协议:Apache License 2.0")
 print("作者邮件:ream_d@yeah.net")
