@@ -363,6 +363,7 @@ def alarm_and_servo_control():
   if empty_power_count>=200:
     judge_num_node=judge_num_node+1
     empty_power_count=200
+    print("power not enough!")
     alarm(200,1000,0)
   
   if read_voltage(adc.read())<0.8:   #接入USB时
@@ -383,9 +384,9 @@ def alarm_and_servo_control():
 '''-----------------------------User Application----------------------------------------------------'''
 soft_timer=0
 soft_timer_flag=0
-pin2 = Pin(2, Pin.OUT)
-pin0 = Pin(0, Pin.OUT)
-pin4 = Pin(4, Pin.OUT)
+pin2 = Pin(5, Pin.OUT)
+pin0 = Pin(18, Pin.OUT)
+pin4 = Pin(19, Pin.OUT)
 
 def rise():
   global soft_timer_flag
@@ -529,3 +530,4 @@ print("作者邮件:ream_d@yeah.net")
 
 
 
+                                                                                        

@@ -107,14 +107,14 @@ class accel():
         error=[0,0,0]
         vals = {}
         for i in range(0,10):
-	            raw_ints = self.get_raw_values()
-	            vals["GyX"] = self.bytes_toint(raw_ints[8], raw_ints[9])
-	            vals["GyY"] = self.bytes_toint(raw_ints[10], raw_ints[11])
-	            vals["GyZ"] = self.bytes_toint(raw_ints[12], raw_ints[13])
-	            error[0]= error[0]+vals["GyX"]
-	            error[1]= error[1]+vals["GyY"]
-	            error[2]= error[2]+vals["GyZ"]
-	            sleep_ms(8)
+            raw_ints = self.get_raw_values()
+            vals["GyX"] = self.bytes_toint(raw_ints[8], raw_ints[9])
+            vals["GyY"] = self.bytes_toint(raw_ints[10], raw_ints[11])
+            vals["GyZ"] = self.bytes_toint(raw_ints[12], raw_ints[13])
+            error[0]= error[0]+vals["GyX"]
+            error[1]= error[1]+vals["GyY"]
+            error[2]= error[2]+vals["GyZ"]
+            sleep_ms(8)
         error[1]=error[1]/10.0
         error[2]=error[2]/10.0
         error[0]=error[0]/10.0
