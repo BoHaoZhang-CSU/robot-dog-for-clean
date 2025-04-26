@@ -384,9 +384,9 @@ def alarm_and_servo_control():
 '''-----------------------------User Application----------------------------------------------------'''
 soft_timer=0
 soft_timer_flag=0
-pin2 = Pin(5, Pin.OUT)
-pin0 = Pin(18, Pin.OUT)
-pin4 = Pin(19, Pin.OUT)
+pin2 = Pin(2, Pin.OUT)
+pin0 = Pin(0, Pin.OUT)
+pin4 = Pin(4, Pin.OUT)
 
 def rise():
   global soft_timer_flag
